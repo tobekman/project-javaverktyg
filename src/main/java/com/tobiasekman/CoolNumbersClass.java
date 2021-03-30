@@ -1,12 +1,20 @@
+package com.tobiasekman;
+
 import com.google.common.primitives.Ints;
 
 public class CoolNumbersClass {
 
     private final int[] numArray;
 
-    public CoolNumbersClass(int num1, int num2, int num3) {
+    public CoolNumbersClass(int[] numArray) {
 
-        this.numArray = new int[] { num1, num2, num3 };
+        this.numArray = numArray;
+
+    }
+
+    public int getSumFromLowestAndHighestNumber() {
+
+        return this.lowestNum() + this.highestNum();
 
     }
 
