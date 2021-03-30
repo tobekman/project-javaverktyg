@@ -25,8 +25,10 @@ pipeline {
     }
 
     stage('Push to Docker') {
-        sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
-        sh 'docker push tobekm/project-javaverktyg:1.0'
+        steps {
+            sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
+            sh 'docker push tobekm/project-javaverktyg:1.0'
+        }
     }
 
   }
