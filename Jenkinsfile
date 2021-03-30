@@ -27,7 +27,7 @@ pipeline {
     stage('Run') {
         steps {
             sh 'cd target'
-            sh 'java -jar /target/project-javaverktyg-1.0-SNAPSHOT.jar'
+            sh 'java -jar project-javaverktyg-1.0-SNAPSHOT.jar'
             //sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
             //sh 'docker push tobekm/project-javaverktyg:1.0'
         }
