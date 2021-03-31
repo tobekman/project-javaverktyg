@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'tobekm/project-javaverktyg'
+        registry = 'https://hub.docker.com/repository/docker/tobekm/project-javaverktyg'
         registryCredential = 'docker-hub'
         dockerImage = ''
     }
