@@ -3,7 +3,7 @@ pipeline {
         //registry = 'https://hub.docker.com/repository/docker/tobekm/project-javaverktyg'
         //registryCredential = 'docker-hub'
         //dockerImage = ''
-        DOCKER_CERT_PATH = credentials('id-for-a-docker-cred')
+        DOCKER_CERT_PATH = credentials('docker-hub')
     }
     agent any
 
