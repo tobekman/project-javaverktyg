@@ -1,4 +1,4 @@
-node {
+pipeline {
   agent any
 
   tools {
@@ -23,7 +23,5 @@ node {
         bat 'mvn package'
       }
     }
-
   }
-
 }
