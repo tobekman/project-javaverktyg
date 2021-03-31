@@ -9,7 +9,7 @@ pipeline {
 
     tools {
         maven 'maven'
-    
+
     }
 
     stages {
@@ -33,7 +33,8 @@ pipeline {
 
         stage('Build docker image') {
             steps {
-                sh 'docker version'
+                script {
+                }
             }
         }
     }
