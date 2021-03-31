@@ -18,17 +18,20 @@ pipeline {
       }
     }
 
-    stage('Package') {
+    stage('Deploy') {
       steps {
         sh 'mvn package'
+        sh 'java -jar project-javaverktyg-1.0-SNAPSHOT-jar-with-dependencies.jar'
+        sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
+        sh 'docker push tobekm/project-javaverktyg:1.0'
       }
     }
 
     stage('Run') {
         steps {
-            sh 'java -jar project-javaverktyg-1.0-SNAPSHOT-jar-with-dependencies.jar'
-            sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
-            sh 'docker push tobekm/project-javaverktyg:1.0'
+            bat 'java -jar project-javaverktyg-1.0-SNAPSHOT-jar-with-dependencies.jar'
+            bat 'docker build -t tobekm/project-javaverktyg:1.0 .'
+            bat 'docker push tobekm/project-javaverktyg:1.0'
         }
     }
 
