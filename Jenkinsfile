@@ -1,27 +1,38 @@
 pipeline {
-  agent any
+    environment {
+        registry = 'https://hub.docker.com/repository/docker/tobekm/project-javaverktyg'
+        registryCredential = 'docker-hub'
+        dockerImage = ''
+    }
+    agent any
 
-  tools {
-    maven 'maven'
-  }
-
-  stages {
-    stage('Build') {
-      steps {
-        sh 'mvn clean compile'
-      }
+    tools {
+        maven 'maven'
     }
 
-    stage('Test') {
-      steps {
-        sh 'mvn test'
-      }
-    }
+    stages {
+        stage('Build') {
+          steps {
+            sh 'mvn clean compile'
+          }
+        }
 
-    stage('Deploy') {
-      steps {
-        sh 'mvn package'
-      }
+        stage('Test') {
+          steps {
+            sh 'mvn test'
+          }
+        }
+
+        stage('Deploy') {
+          steps {
+            sh 'mvn package'
+            script {
+                dockerImage = docker.build registry + 'latest'
+                docker.withRegistry('', registryCredential ) {
+                    dockerImage.push()
+                }
+            }
+          }
+        }
     }
-  }
 }
