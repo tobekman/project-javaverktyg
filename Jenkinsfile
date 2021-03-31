@@ -26,13 +26,9 @@ pipeline {
 
     stage('Run') {
         steps {
-            sh 'ls'
-            sh 'cd target'
-            sh 'ls'
-            //sh 'cd target'
-            //sh 'java -jar project-javaverktyg-1.0-SNAPSHOT-jar-with-dependencies.jar'
-            //sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
-            //sh 'docker push tobekm/project-javaverktyg:1.0'
+            sh 'java -jar project-javaverktyg-1.0-SNAPSHOT-jar-with-dependencies.jar'
+            sh 'docker build -t tobekm/project-javaverktyg:1.0 .'
+            sh 'docker push tobekm/project-javaverktyg:1.0'
         }
     }
 
