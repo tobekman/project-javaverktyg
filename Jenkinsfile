@@ -28,12 +28,14 @@ pipeline {
             sh 'mvn package'
           }
         }
-        
+
         stage('Build docker image') {
-            script {
-                dockerImage = docker.build registry + 'latest'
-                docker.withRegistry('', registryCredential ) {
-                    dockerImage.push()
+            steps {
+                script {
+                    dockerImage = docker.build registry + 'latest'
+                    docker.withRegistry('', registryCredential ) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
