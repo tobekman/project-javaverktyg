@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = 'https://hub.docker.com/repository/docker/tobekm/project-javaverktyg'
+        registry = 'tobekm/project-javaverktyg'
         registryCredential = 'docker-hub'
         dockerImage = ''
     }
@@ -33,7 +33,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + 'latest'
+                    dockerImage = docker.build registry + '1.1'
                 }
             }
         }
