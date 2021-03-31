@@ -1,9 +1,8 @@
 pipeline {
     environment {
-        //registry = 'https://hub.docker.com/repository/docker/tobekm/project-javaverktyg'
-        //registryCredential = 'docker-hub'
-        //dockerImage = ''
-        DOCKER_CERT_PATH = credentials('docker-hub')
+        registry = 'tobekm/project-javaverktyg'
+        registryCredential = 'docker-hub'
+        dockerImage = ''
     }
     agent any
 
@@ -34,6 +33,17 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
+                    dockerImage = docker.build registry + 'latest'
+                }
+            }
+        }
+
+        stage('Push to docker hub') {
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
                 }
             }
         }
