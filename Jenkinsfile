@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Package') {
             steps {
                 bat 'mvn package'
             }
