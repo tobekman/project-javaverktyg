@@ -33,7 +33,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ':1.1'
+                    dockerImage = docker.build registry + ':1.2'
                 }
             }
         }
